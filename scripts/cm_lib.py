@@ -136,7 +136,7 @@ def ordered_json(input, plot=True, wo_note=True, wi_note=True, caption=True, cha
                     utterance.append((CHARACTER_ENTITIES, [NoIndent(t) for t in u[CHARACTER_ENTITIES]]))
 
                 if emotion and EMOTION in u:
-                    utterance.append(pair(EMOTION, u))
+                    utterance.append((EMOTION, NoIndent(u[EMOTION])))
 
                 if caption and CAPTION in u:
                     utterance.append((CAPTION, NoIndent(u[CAPTION])))
@@ -224,6 +224,9 @@ def entity_stats(json_dir):
                     num_tokens += sum([len(t) for t in utterance[TOKENS]])
                     speaker_list.extend(utterance[SPEAKERS])
 
+                    if len(utterance[TOKENS]) != len(utterance[CHARACTER_ENTITIES]):
+                        print(utterances[UTTERANCE_ID])
+
                     for character_entities in utterance[CHARACTER_ENTITIES]:
                         num_mentions += len(character_entities)
                         for entities in character_entities:
@@ -231,7 +234,7 @@ def entity_stats(json_dir):
 
         g_speaker_list.extend(speaker_list)
         g_entity_list.extend(entity_list)
-        return [season[SEASON_ID], len(episodes), num_scenes, num_utterances, num_tokens, len(speaker_list), num_mentions, len(entity_list)]
+        return [season[SEASON_ID], len(episodes), num_scenes, num_utterances, num_tokens, len(set(speaker_list)), num_mentions, len(set(entity_list))]
 
     g_speaker_list = []
     g_entity_list = []
@@ -396,6 +399,41 @@ def merge_rc(input_dir1, input_dir2, output_dir):
             fout.write(ordered_json(season1))
 
 
+def merge_em(input_dir, ann_dir, output_dir):
+    def extend_ann(ann_file, ls):
+        fin = open(ann_file)
+
+        for i, line in enumerate(fin):
+            if i == 0: continue
+            l = line.split()
+            season_id = int(l[0]) - 1
+            episode_id = int(l[1]) - 1
+            scene_id = int(l[2]) - 1
+            utterance_id = int(l[3])
+            annotation = l[4:8]
+            gold = l[10]
+            ls.append((season_id, episode_id, scene_id, utterance_id, annotation, gold))
+
+
+    annotations = []
+    for ann_file in glob.glob(os.path.join(ann_dir, '*.tsv')): extend_ann(ann_file, annotations)
+    seasons = [json.load(open(input_file)) for input_file in sorted(glob.glob(os.path.join(input_dir, '*.json')))]
+
+    for season_id, episode_id, scene_id, utterance_id, annotation, gold in annotations:
+        utterance = seasons[season_id][EPISODES][episode_id][SCENES][scene_id][UTTERANCES][utterance_id]
+        if EMOTION in utterance:
+            if utterance[EMOTION] != gold: print(utterance[UTTERANCE_ID])
+            utterance[EMOTION] = [gold, annotation]
+        else:
+            print(utterance[UTTERANCE_ID])
+
+    for i, season in enumerate(seasons):
+        with open(os.path.join(output_dir, 'friends_season_0%d.json' % (i+1)), 'w') as fout:
+            fout.write(ordered_json(season))
+
+
+
+
 
 
 
@@ -408,6 +446,12 @@ if __name__ == '__main__':
     # output_dir = '/Users/jdchoi/Git/character-identification/json'
     # extract_character_identification(input_dir, output_dir)
     # entity_stats(output_dir)
+
+    # input_dir = '/Users/jdchoi/Git/character-mining/json'
+    # ann_dir = '/Users/jdchoi/Downloads/dataset'
+    # output_dir = '/Users/jdchoi/Git/character-mining/json/em'
+    # merge_em(input_dir, ann_dir, output_dir)
+
 
     # entity_stats(json_dir)
 

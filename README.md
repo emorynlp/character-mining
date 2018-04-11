@@ -4,9 +4,9 @@ The Character Mining project challenges machine comprehension on multiparty dial
 The objective of this project is to infer explicit and implicit contexts about individual characters through their conversations.
 This is an open-source project led by the [Emory NLP](http://nlp.mathcs.emory.edu) research group that provides resources for the following tasks:
 
-* [Character Identification](../character-identification) (since May 2016).
-* [Emotion Detection](../emotion-detection) (since May 2017).
-* [Reading Comprehension](../reading-comprehension) (since May 2018).
+* [Character Identification](../../character-identification) (since May 2016).
+* [Emotion Detection](../../emotion-detection) (since May 2017).
+* [Reading Comprehension](../../reading-comprehension) (since May 2018).
 <!--* [Multimodal Learning](https://github.com/emorynlp/multimodal-learning) (expected May 2018).-->
 <!--* Personality Prediction (expected May 2018).-->
 

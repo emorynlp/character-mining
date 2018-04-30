@@ -656,7 +656,7 @@ if __name__ == '__main__':
     # emotion_stats(output_dir)
 
     # reading comprehension
-    json_dir = '/Users/jdchoi/Git/character-mining/json'
+    # json_dir = '/Users/jdchoi/Git/character-mining/json'
     output_dir = '/Users/jdchoi/Git/reading-comprehension/json'
     # extract_reading_comprehension(json_dir, output_dir)
     reading_stats(output_dir)

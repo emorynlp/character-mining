@@ -7,8 +7,7 @@ This is an open-source project led by the [Emory NLP](http://nlp.mathcs.emory.ed
 * [Character Identification](../../../character-identification) (since May 2016).
 * [Emotion Detection](../../../emotion-detection) (since May 2017).
 * [Reading Comprehension](../../../reading-comprehension) (since May 2018).
-<!--* [Multimodal Learning](https://github.com/emorynlp/multimodal-learning) (expected May 2018).-->
-<!--* Personality Prediction (expected May 2018).-->
+* [Questiong Answering](../../../question-answering) (since May 2019).
 
 We welcome feedbacks and contributions from the community.
 Most of our annotation are crowdsourced; implying that, errors are expected to be found.
@@ -69,6 +68,7 @@ The followings show the statistics including action notes:
 
 ## References
 
+* [FriendsQA: Open-Domain Question Answering on TV Show Transcripts](). Zhengzhe Yang and Jinho D. Choi. In Proceedings of the Annual Conference of the ACL Special Interest Group on Discourse and Dialogue, SIGDIAL'19, 2019 ([poster]()).
 * [They Exist! Introducing Plural Mentions to Coreference Resolution and Entity Linking](http://aclweb.org/anthology/C18-1003). Ethan Zhou and Jinho D. Choi. In Proceedings of the 27th International Conference on Computational Linguistics, COLING'18, 2018 ([slides](https://www.slideshare.net/jchoi7s/they-exist-introducing-plural-mentions-to-coreference-resolution-and-entity-linking)).
 * [SemEval 2018 Task 4: Character Identification on Multiparty Dialogues](http://aclweb.org/anthology/S18-1007), Jinho D. Choi and Henry Y. Chen, Proceedings of the International Workshop on Semantic Evaluation, SemEval'18, 2018 ([slides](https://www.slideshare.net/jchoi7s/semeval-2018-task-4-character-identification-on-multiparty-dialogues)).  
 * [Challenging Reading Comprehension on Daily Conversation: Passage Completion on Multiparty Dialog](http://aclweb.org/anthology/N18-1185). Kaixin Ma, Tomasz Jurczyk, and Jinho D. Choi. In Proceedings of the 16th Annual Conference of the North American Chapter of the Association for Computational Linguistics, NAACL'18, 2018 ([poster](https://www.slideshare.net/jchoi7s/challenging-reading-comprehension-on-daily-conversation-passage-completion-on-multiparty-dialog), [source](https://github.com/Mayer123/Multiparty-Dialog-RC)). 

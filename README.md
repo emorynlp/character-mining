@@ -84,5 +84,3 @@ The followings show the statistics including action notes:
 ## Contact
 
 * [Jinho D. Choi](http://www.cs.emory.edu/~choi).
-
-<script src="https://bibbase.org/show?bib=https://bibbase.github.io/pubs.bib&jsonp=1"></script>

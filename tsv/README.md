@@ -17,7 +17,7 @@ This is a sample of the **.tsv** file:
 
 <br>
 
-Download with one command:
+## Download with one command:
 
 ```bash 
 wget https://raw.githubusercontent.com/gmihaila/character-mining/developer/tsv/friends_transcripts.tsv

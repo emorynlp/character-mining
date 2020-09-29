@@ -1,6 +1,6 @@
 # Parsed transcripts from **.json** to **.tsv** file
 
-## Parse all transcripts for a more seamless experience
+## Parse all transcripts to a single file
 
 Using the **.json** files from from each season, we create a master file that contain all transcripts in a easier to work with format.
 
@@ -20,6 +20,6 @@ This is a sample of the **.tsv** file:
 Download with one command:
 
 ```bash 
-wget friends_transcripts.tsv
+wget https://raw.githubusercontent.com/gmihaila/character-mining/developer/tsv/friends_transcripts.tsv
 ```
 

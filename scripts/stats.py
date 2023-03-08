@@ -19,6 +19,8 @@ import json
 import os
 from collections import Counter, OrderedDict
 
+from tabulate import tabulate
+
 __author__ = 'Jinho D. Choi'
 
 SEASON_ID = 'season_id'
@@ -134,8 +136,9 @@ def entity_stats(json_dir):
     g_speaker_list = []
     g_entity_list = []
 
-    print('\t'.join(['Season ID', 'Episodes', 'Scenes', 'Utterances', 'Tokens', 'Speakers', 'Entities', 'Singular', 'Plural', 'Mentions']))
+    table_header = ['Season ID', 'Episodes', 'Scenes', 'Utterances', 'Tokens', 'Speakers', 'Entities', 'Singular', 'Plural', 'Mentions']
 
+    table_data = []
     for k, json_file in enumerate(sorted(glob.glob(os.path.join(json_dir, '*.json')))):
         if k >= 4: break
         speaker_list = []
@@ -194,17 +197,17 @@ def entity_stats(json_dir):
 
         g_speaker_list.extend(speaker_list)
         g_entity_list.extend(entity_list)
-        s = '\t'.join(map(str, [season[SEASON_ID], len(episodes), num_scenes, num_utterances, num_tokens, len(set(speaker_list)), num_singular_mentions, num_plural_mentions, num_mentions, num_clusters, len(set(entity_list))]))
-        print(s)
+        table_data.append([season[SEASON_ID], len(episodes), num_scenes, num_utterances, num_tokens, len(set(speaker_list)), num_singular_mentions, num_plural_mentions, num_mentions, num_clusters, len(set(entity_list))])
 
-    print('All speakers: %s' % (len(set(g_speaker_list))))
+    print(tabulate(table_data, headers=table_header, tablefmt='plain'))
+    print('\nAll speakers: %s' % (len(set(g_speaker_list))))
     print('All entities: %s' % (len(set(g_entity_list))))
 
 
 
 
 if __name__ == '__main__':
-    json_dir = '/Users/jdchoi/Git/character-mining-dev/json'
+    json_dir = '../json'
     # print_general_stats(json_dir)
     entity_stats(json_dir)
     #
